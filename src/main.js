@@ -1,7 +1,9 @@
 const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const console = require("console");
-const { layersOrder, format, rarity } = require("./config.js");
+const env = require('./env.json');
+
+const { layersOrder, format, rarity } = require(`./${env.configFile}`);
 
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -10,9 +12,9 @@ if (!process.env.PWD) {
   process.env.PWD = process.cwd();
 }
 
-const buildDir = `${process.env.PWD}/build`;
+const buildDir = `${process.env.PWD}/${env.buildFolder}`;
 const metDataFile = '_metadata.json';
-const layersDir = `${process.env.PWD}/layers`;
+const layersDir = `${process.env.PWD}/${env.layersFolder}`;
 
 let metadata = [];
 let attributes = [];
