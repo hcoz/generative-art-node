@@ -16,7 +16,6 @@ const buildDir = `${process.env.PWD}/${env.buildFolder}`;
 const metDataFile = '_metadata.json';
 const layersDir = `${process.env.PWD}/${env.layersFolder}`;
 
-let metadata = [];
 let attributes = [];
 let hash = [];
 let decodedHash = [];
@@ -97,7 +96,7 @@ const addMetadata = _edition => {
         name: _edition,
         attributes: attributes,
     };
-    metadata.push(tempMetadata);
+
     createMetaDataJson(tempMetadata);
     attributes = [];
     hash = [];
@@ -165,16 +164,6 @@ const createFiles = async edition => {
     }
 };
 
-const createMetaData = () => {
-    fs.stat(`${buildDir}/${metDataFile}`, (err) => {
-        if (err == null || err.code === 'ENOENT') {
-            fs.writeFileSync(`${buildDir}/${metDataFile}`, JSON.stringify(metadata, null, 2));
-        } else {
-            console.log('Oh no, error: ', err.code);
-        }
-    });
-};
-
 function createMetaDataJson(meta) {
     fs.stat(`${buildDir}/${metDataFile}`, (err) => {
         if (err == null || err.code === 'ENOENT') {
@@ -185,4 +174,4 @@ function createMetaDataJson(meta) {
     });
 }
 
-module.exports = { buildSetup, createFiles, createMetaData };
+module.exports = { buildSetup, createFiles };
