@@ -1,12 +1,14 @@
 const layersOrder = [
-    { name: 'backgrounds', number: 10 },
-    { name: 'hats', number: 7 },
-    { name: 'skins', number: 3 },
-    { name: 'cheeks', number: 6 },
-    { name: 'eyes', number: 18 },
-    { name: 'accessories', number: 10 },
-    { name: 'mouths', number: 11 },
-    { name: 'hairs', number: 20 },
+    { name: 'Backgrounds', number: 10 },
+    { name: 'Fur', number: 16 },
+    { name: 'Eye', number: 16 },
+    { name: 'Eyebrow', number: 12 },
+    { name: 'Head', number: 46 },
+    { name: 'Clothes', number: 57 },
+    { name: 'Earring', number: 20 }, // 45%
+    { name: 'Glasses', number: 45 }, // 40%
+    { name: 'Nose', number: 30 }, // 30%
+    { name: 'Ray', number: 100 }, // 2%
 ];
   
 const format = {
@@ -15,9 +17,9 @@ const format = {
 };
 
 const rarity = [
-    { key: "", val: "original" },
-    { key: "_r", val: "rare" },
-    { key: "_sr", val: "super rare" },
+    { key: '', val: 'original' },
+    { key: '_r', val: 'rare' },
+    { key: '_sr', val: 'super rare' },
 ];
 
 const defaultEdition = 10;

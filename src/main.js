@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { createCanvas, loadImage } = require('canvas');
 const console = require('console');
-const env = require('./env.json');
+const env = require('./env');
 
 const { layersOrder, format, rarity } = require(`./${env.configFile}`);
 
@@ -84,14 +84,8 @@ const saveLayer = (_canvas, _edition) => {
 };
 
 const addMetadata = _edition => {
-    // let dateTime = Date.now();
     let tempMetadata = {
-        // hash: hash.join(''),
-        // decodedHash: decodedHash,
-        // edition: _edition,
-        // date: dateTime,
-        description: 'Friendly OpenSea Creature that enjoys long swims in the ocean.',
-        external_url: 'https://openseacreatures.io/3',
+        description: env.type,
         image: 'https://storage.googleapis.com/opensea-prod.appspot.com/puffs/3.png',
         name: _edition,
         attributes: attributes,
@@ -106,11 +100,7 @@ const addMetadata = _edition => {
 const addAttributes = (_element, _layer) => {
     let tempAttr = {
         trait_type: _layer.name,
-        value: _element.name
-        // id: _element.id,
-        // layer: _layer.name,
-        // name: _element.name,
-        // rarity: _element.rarity,
+        value: _element.name,
     };
     attributes.push(tempAttr);
     hash.push(_layer.id);
@@ -154,7 +144,7 @@ const createFiles = async edition => {
                 )}`
             );
             numDupes++;
-            if (numDupes > edition) break; //prevents infinite loop if no more unique items can be created
+            if (numDupes > edition) break; // prevents infinite loop if no more unique items can be created
             i--;
         } else {
             Exists.set(key, i);
