@@ -86,7 +86,7 @@ const saveLayer = (_canvas, _edition) => {
 const addMetadata = _edition => {
     let tempMetadata = {
         description: env.type,
-        image: 'https://storage.googleapis.com/opensea-prod.appspot.com/puffs/3.png',
+        image: '<image-url>',
         name: _edition,
         attributes: attributes,
     };
