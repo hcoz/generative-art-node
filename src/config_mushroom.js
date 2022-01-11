@@ -1,9 +1,9 @@
 const layersOrder = [
-    { name: 'background', number: 18 },
+    { name: 'background', number: 4 },
     { name: 'hat', number: 13 },
     { name: 'skin', number: 5 },
     { name: 'cheeks', number: 10 }, // 30%
-    { name: 'eyes', number: 28 }, 
+    { name: 'eyes', number: 21 }, 
     { name: 'accessories', number: 18 }, // 50%
     { name: 'mouth', number: 11 },
     { name: 'hair', number: 30 }, // 33%
@@ -20,6 +20,6 @@ const rarity = [
     { key: '_sr', val: 'super rare' },
 ];
 
-const defaultEdition = 5000;
+const defaultEdition = 200;
 
 module.exports = { layersOrder, format, rarity, defaultEdition };
