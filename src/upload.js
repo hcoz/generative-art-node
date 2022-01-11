@@ -33,6 +33,7 @@ async function upload() {
         const added = await client.add(JSON.stringify(metadata));
         console.log('added: ', added);
         const dataURL = `https://ipfs.infura.io/ipfs/${added.path}`;
+        console.log('dataURL: ', dataURL);
     } catch (error) {
         console.log('error: ', error);
     }
