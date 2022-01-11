@@ -21,8 +21,6 @@ To find out more please visit:
 
 Create generative art by using the canvas api and node js
 
-![](https://github.com/HashLips/generative-art-node/blob/main/src/preview.png)
-
 ## Installation
 
 ```sh

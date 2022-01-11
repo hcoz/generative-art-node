@@ -13,7 +13,7 @@ if (!process.env.PWD) {
 }
 
 const buildDir = `${process.env.PWD}/${env.buildFolder}`;
-const metDataFile = '_metadata.json';
+const metDataFile = '.json';
 const layersDir = `${process.env.PWD}/${env.layersFolder}`;
 
 let attributes = [];

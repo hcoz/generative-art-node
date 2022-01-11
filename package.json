@@ -1,15 +1,17 @@
 {
   "name": "art_generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "hco edition",
   "main": "index.js",
   "scripts": {
     "build": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "upload": "node src/upload.js"
   },
-  "author": "Daniel Eugene Botha",
+  "author": "hco",
   "license": "ISC",
   "dependencies": {
-    "canvas": "^2.8.0"
+    "canvas": "^2.8.0",
+    "dotenv": "^11.0.0",
+    "ipfs-http-client": "^55.0.0"
   }
 }
