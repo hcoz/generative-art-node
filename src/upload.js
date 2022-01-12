@@ -17,23 +17,31 @@ const client = ipfsHttpClient.create({
 
 async function upload() {
     try {
-        const file = fs.readFileSync(`${process.env.PWD}\\${env.buildFolder}\\images\\1.png`);
+        const dragonId = 1;
+        const file = fs.readFileSync(`${process.env.PWD}\\${env.buildFolder}\\images\\${dragonId}.png`);
         const uploaded = await client.add(
             file,
             {
                 progress: (prog) => console.log(`received: ${prog}`)
             }
         );
-        console.log('uploaded: ', uploaded);
-        
-        const metaFile = fs.readFileSync(`${process.env.PWD}\\${env.buildFolder}\\metadata\\1.json`);
+
+        const metaFile = fs.readFileSync(`${process.env.PWD}\\${env.buildFolder}\\metadata\\${dragonId}.json`);
         const metadata = JSON.parse(metaFile);
         metadata.image = `https://ipfs.infura.io/ipfs/${uploaded.path}`;
-        console.log('metadata: ', metadata);
+
         const added = await client.add(JSON.stringify(metadata));
-        console.log('added: ', added);
         const dataURL = `https://ipfs.infura.io/ipfs/${added.path}`;
-        console.log('dataURL: ', dataURL);
+
+        const dragonsFile = fs.readFileSync(`${process.env.PWD}\\${env.buildFolder}\\dragons.json`);
+        const dragons = JSON.parse(dragonsFile);
+        dragons.list.push({
+            id: dragonId,
+            url: dataURL,
+            isSold: false
+        });
+
+        fs.writeFileSync(`${process.env.PWD}\\${env.buildFolder}\\dragons.json`, JSON.stringify(dragons));
     } catch (error) {
         console.log('error: ', error);
     }
